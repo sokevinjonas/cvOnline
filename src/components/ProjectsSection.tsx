@@ -169,12 +169,20 @@ const ProjectsSection = () => {
         </div>
 
         <div className="text-center mt-12">
-          <Button variant="outline" size="lg" asChild>
-            <a href="https://github.com/jonas-so" target="_blank" rel="noopener noreferrer">
-              <Github className="mr-2 h-5 w-5" />
-              Voir tous mes projets sur GitHub
-            </a>
-          </Button>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button variant="outline" size="lg" asChild>
+              <a href="https://github.com/jonas-so" target="_blank" rel="noopener noreferrer">
+                <Github className="mr-2 h-5 w-5" />
+                Voir tous mes projets sur GitHub
+              </a>
+            </Button>
+            <Button variant="default" size="lg" asChild>
+              <a href="#contact">
+                <ExternalLink className="mr-2 h-5 w-5" />
+                Voir tous mes projets réalisés
+              </a>
+            </Button>
+          </div>
         </div>
       </div>
     </section>
