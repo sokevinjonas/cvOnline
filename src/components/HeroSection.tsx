@@ -14,8 +14,8 @@ const HeroSection = () => {
       <div className="container-custom text-center space-y-8 animate-fade-in">
         {/* Main Title */}
         <div className="space-y-4">
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight">
-            <span className="hero-text">Jonas SO</span>
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight text-foreground">
+            SO Kevin Jonas Gningnabe
           </h1>
           <h2 className="text-xl md:text-2xl lg:text-3xl text-muted-foreground font-medium">
             Développeur FullStack & Créateur de contenu
@@ -24,23 +24,23 @@ const HeroSection = () => {
 
         {/* Description */}
         <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-          Spécialisé en <span className="text-primary font-semibold">Angular, Ionic, Laravel</span> et 
+          Spécialisé en <span className="text-foreground font-semibold">Angular, Ionic, Laravel</span> et 
           passionné par la création de solutions innovantes. Créateur de 
-          <span className="text-primary font-semibold"> Couturart</span>, un SaaS pour les couturières.
+          <span className="text-foreground font-semibold"> Couturart</span>, un SaaS pour les couturières.
         </p>
 
         {/* Stats */}
         <div className="flex flex-wrap justify-center gap-8 md:gap-12 py-8">
           <div className="text-center">
-            <div className="text-2xl md:text-3xl font-bold text-primary">3+</div>
+            <div className="text-2xl md:text-3xl font-bold text-foreground">3+</div>
             <div className="text-muted-foreground">Années d'expérience</div>
           </div>
           <div className="text-center">
-            <div className="text-2xl md:text-3xl font-bold text-primary">10+</div>
+            <div className="text-2xl md:text-3xl font-bold text-foreground">10+</div>
             <div className="text-muted-foreground">Projets réalisés</div>
           </div>
           <div className="text-center">
-            <div className="text-2xl md:text-3xl font-bold text-primary">5K+</div>
+            <div className="text-2xl md:text-3xl font-bold text-foreground">5K+</div>
             <div className="text-muted-foreground">Vues LinkedIn</div>
           </div>
         </div>

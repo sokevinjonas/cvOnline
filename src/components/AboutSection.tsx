@@ -47,7 +47,7 @@ const AboutSection = () => {
             </p>
             
             <p className="text-muted-foreground leading-relaxed">
-              Mon projet phare, <strong className="text-primary">Couturart</strong>, est un SaaS conçu pour 
+              Mon projet phare, <strong className="text-foreground">Couturart</strong>, est un SaaS conçu pour 
               révolutionner la gestion des ateliers de couture. Cette expérience m'a permis de maîtriser 
               toute la chaîne de développement, de la conception à la mise en production.
             </p>

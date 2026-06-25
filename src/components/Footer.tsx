@@ -43,7 +43,7 @@ const Footer = () => {
           {/* Brand Section */}
           <div className="lg:col-span-2">
             <div className="space-y-4">
-              <h3 className="text-2xl font-bold hero-text">Jonas SO</h3>
+              <h3 className="text-2xl font-bold text-foreground">SO Kevin Jonas Gningnabe</h3>
               <p className="text-muted-foreground max-w-md">
                 Développeur FullStack passionné par l'innovation technologique et l'entrepreneuriat en Afrique. 
                 Créateur de solutions digitales qui font la différence.
