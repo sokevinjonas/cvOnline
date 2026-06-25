@@ -10,7 +10,6 @@ const Header = () => {
     { label: "À propos", href: "#about" },
     { label: "Projets", href: "#projects" },
     { label: "Blog", href: "#blog" },
-    { label: "Quiz", href: "#quiz" },
     { label: "Contact", href: "#contact" },
   ];
 
@@ -26,8 +25,8 @@ const Header = () => {
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
       <nav className="container-custom flex items-center justify-between py-4">
         {/* Logo */}
-        <div className="font-bold text-xl hero-text">
-          Jonas SO
+        <div className="font-bold text-xl text-foreground">
+          SO Kevin Jonas Gningnabe
         </div>
 
         {/* Desktop Navigation */}

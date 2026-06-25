@@ -130,7 +130,7 @@
 
 @layer components {
   .hero-text {
-    @apply bg-gradient-to-r from-primary via-primary-light to-primary bg-clip-text text-transparent;
+    @apply text-foreground;
   }
   
   .card-hover {
