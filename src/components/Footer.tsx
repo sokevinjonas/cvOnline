@@ -108,7 +108,7 @@ const Footer = () => {
         {/* Bottom Footer */}
         <div className="py-6 flex flex-col sm:flex-row justify-between items-center gap-4">
           <div className="text-sm text-muted-foreground">
-            © {currentYear} Jonas Kevin SO. Tous droits réservés.
+            © {currentYear} SO Kevin Jonas Gningnabe. Tous droits réservés.
           </div>
           
           <div className="flex items-center gap-4 text-sm text-muted-foreground">
