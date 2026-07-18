@@ -1,125 +1,158 @@
-import { Button } from "@/components/ui/button";
-import { Separator } from "@/components/ui/separator";
 import { Github, Linkedin, Mail, ArrowUp } from "lucide-react";
+import { Button } from "@/components/ui/button";
+
+/**
+ * Footer — sobre, éditorial. Navigation + réseaux + retour top.
+ */
+const NAV = [
+  { label: "Accueil", href: "#hero" },
+  { label: "Expertise", href: "#expertise" },
+  { label: "Expériences", href: "#experience" },
+  { label: "Réalisations", href: "#projects" },
+  { label: "À propos", href: "#about" },
+  { label: "Écrits", href: "#blog" },
+  { label: "Contact", href: "#contact" },
+] as const;
+
+const SOCIALS = [
+  {
+    icon: Linkedin,
+    label: "LinkedIn",
+    href: "https://linkedin.com/in/jonas-so",
+  },
+  { icon: Github, label: "GitHub", href: "https://github.com/jonas-so" },
+  { icon: Mail, label: "Email", href: "mailto:jonas.so@example.com" },
+] as const;
 
 const Footer = () => {
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
+  const year = new Date().getFullYear();
 
-  const currentYear = new Date().getFullYear();
-
-  const quickLinks = [
-    { label: "Accueil", href: "#hero" },
-    { label: "À propos", href: "#about" },
-    { label: "Projets", href: "#projects" },
-    { label: "Blog", href: "#blog" },
-    { label: "Quiz", href: "#quiz" },
-    { label: "Contact", href: "#contact" },
-  ];
-
-  const projects = [
-    { label: "Couturart SaaS", href: "https://couturart.com" },
-    { label: "Portfolio Template", href: "#" },
-    { label: "Laravel API", href: "#" },
-  ];
-
-  const scrollToSection = (href: string) => {
-    if (href.startsWith('#')) {
-      const element = document.querySelector(href);
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-      }
-    } else {
-      window.open(href, '_blank');
+  const scrollTo = (href: string) => {
+    if (href.startsWith("#")) {
+      document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
     }
   };
 
   return (
-    <footer className="bg-card border-t border-border">
-      <div className="container-custom">
-        {/* Main Footer Content */}
-        <div className="py-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {/* Brand Section */}
-          <div className="lg:col-span-2">
-            <div className="space-y-4">
-              <h3 className="text-2xl font-bold text-foreground">SO Kevin Jonas Gningnabe</h3>
-              <p className="text-muted-foreground max-w-md">
-                Développeur FullStack passionné par l'innovation technologique et l'entrepreneuriat en Afrique. 
-                Créateur de solutions digitales qui font la différence.
-              </p>
-              <div className="flex items-center gap-4">
-                <Button variant="ghost" size="sm" asChild>
-                  <a href="https://linkedin.com/in/jonas-so" target="_blank" rel="noopener noreferrer">
-                    <Linkedin className="h-5 w-5" />
+    <footer className="border-t border-border bg-background">
+      <div className="container-custom py-16">
+        <div className="grid gap-10 md:grid-cols-12">
+          {/* Brand */}
+          <div className="md:col-span-5">
+            <div className="flex items-center gap-2">
+              <span
+                aria-hidden
+                className="grid h-8 w-8 place-items-center rounded-lg border border-border bg-secondary/60 text-sm font-bold"
+              >
+                SK
+              </span>
+              <span className="text-sm font-semibold tracking-tight">
+                SO Kevin Jonas Gningnabe
+              </span>
+            </div>
+            <p className="mt-4 max-w-sm text-sm leading-relaxed text-muted-foreground">
+              Ingénieur Logiciel Full Stack · Software Engineer · Consultant ·
+              Product Builder · SaaS Founder. Basé à Ouagadougou, disponible à
+              l'international.
+            </p>
+            <div className="mt-6 flex items-center gap-1">
+              {SOCIALS.map((s) => (
+                <Button
+                  key={s.label}
+                  variant="ghost"
+                  size="icon"
+                  asChild
+                  aria-label={s.label}
+                >
+                  <a
+                    href={s.href}
+                    target={s.href.startsWith("http") ? "_blank" : undefined}
+                    rel={
+                      s.href.startsWith("http") ? "noopener noreferrer" : undefined
+                    }
+                  >
+                    <s.icon className="h-4 w-4" />
                   </a>
                 </Button>
-                <Button variant="ghost" size="sm" asChild>
-                  <a href="https://github.com/jonas-so" target="_blank" rel="noopener noreferrer">
-                    <Github className="h-5 w-5" />
-                  </a>
-                </Button>
-                <Button variant="ghost" size="sm" asChild>
-                  <a href="mailto:jonas.so@example.com">
-                    <Mail className="h-5 w-5" />
-                  </a>
-                </Button>
-              </div>
+              ))}
             </div>
           </div>
 
-          {/* Quick Links */}
-          <div>
-            <h4 className="font-semibold mb-4">Navigation</h4>
-            <ul className="space-y-2">
-              {quickLinks.map((link) => (
-                <li key={link.label}>
+          {/* Nav */}
+          <nav aria-label="Pied de page" className="md:col-span-4">
+            <p className="mb-4 font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
+              Navigation
+            </p>
+            <ul className="grid grid-cols-2 gap-x-6 gap-y-2 text-sm">
+              {NAV.map((n) => (
+                <li key={n.href}>
                   <button
-                    onClick={() => scrollToSection(link.href)}
-                    className="text-muted-foreground hover:text-primary transition-colors text-sm"
+                    onClick={() => scrollTo(n.href)}
+                    className="text-muted-foreground transition-colors hover:text-foreground"
                   >
-                    {link.label}
+                    {n.label}
                   </button>
                 </li>
               ))}
             </ul>
-          </div>
+          </nav>
 
-          {/* Projects */}
-          <div>
-            <h4 className="font-semibold mb-4">Projets</h4>
-            <ul className="space-y-2">
-              {projects.map((project) => (
-                <li key={project.label}>
-                  <button
-                    onClick={() => scrollToSection(project.href)}
-                    className="text-muted-foreground hover:text-primary transition-colors text-sm"
-                  >
-                    {project.label}
-                  </button>
-                </li>
-              ))}
+          {/* Elsewhere */}
+          <div className="md:col-span-3">
+            <p className="mb-4 font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
+              Ailleurs
+            </p>
+            <ul className="space-y-2 text-sm">
+              <li>
+                <a
+                  href="https://couturart.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-muted-foreground transition-colors hover:text-foreground"
+                >
+                  Couturart →
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://linkedin.com/in/jonas-so"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-muted-foreground transition-colors hover:text-foreground"
+                >
+                  LinkedIn →
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://github.com/jonas-so"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-muted-foreground transition-colors hover:text-foreground"
+                >
+                  GitHub →
+                </a>
+              </li>
             </ul>
           </div>
         </div>
 
-        <Separator />
-
-        {/* Bottom Footer */}
-        <div className="py-6 flex flex-col sm:flex-row justify-between items-center gap-4">
-          <div className="text-sm text-muted-foreground">
-            © {currentYear} SO Kevin Jonas Gningnabe. Tous droits réservés.
-          </div>
-          
-          <div className="flex items-center gap-4 text-sm text-muted-foreground">
-            <span>Développé avec ❤️ au Burkina Faso</span>
+        <div className="mt-12 flex flex-col-reverse items-start justify-between gap-4 border-t border-border pt-6 sm:flex-row sm:items-center">
+          <p className="text-xs text-muted-foreground">
+            © {year} SO Kevin Jonas Gningnabe. Tous droits réservés.
+          </p>
+          <div className="flex items-center gap-4">
+            <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
+              Ouagadougou · UTC+0
+            </p>
             <Button
-              variant="ghost"
-              size="sm"
-              onClick={scrollToTop}
-              className="p-2"
+              variant="outline"
+              size="icon"
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+              aria-label="Retour en haut"
+              className="h-8 w-8"
             >
-              <ArrowUp className="h-4 w-4" />
+              <ArrowUp className="h-3.5 w-3.5" />
             </Button>
           </div>
         </div>
