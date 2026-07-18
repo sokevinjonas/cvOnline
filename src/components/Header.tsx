@@ -1,110 +1,170 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Github, Linkedin, Mail } from "lucide-react";
+import { Menu, X, Github, Linkedin, Download } from "lucide-react";
+import { cn } from "@/lib/utils";
+
+/**
+ * Header — Sticky, blur, hairline animée au scroll.
+ * Nav : Accueil · Expertise · Réalisations · À propos · Contact
+ * Droite : LinkedIn · GitHub · Télécharger CV
+ */
+const NAV_ITEMS = [
+  { label: "Accueil", href: "#hero" },
+  { label: "Expertise", href: "#expertise" },
+  { label: "Réalisations", href: "#projects" },
+  { label: "À propos", href: "#about" },
+  { label: "Contact", href: "#contact" },
+] as const;
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
-  const navItems = [
-    { label: "Accueil", href: "#hero" },
-    { label: "À propos", href: "#about" },
-    { label: "Projets", href: "#projects" },
-    { label: "Blog", href: "#blog" },
-    { label: "Contact", href: "#contact" },
-  ];
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   const scrollToSection = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-      setIsMenuOpen(false);
-    }
+    const el = document.querySelector(href);
+    if (el) el.scrollIntoView({ behavior: "smooth" });
+    setIsMenuOpen(false);
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
-      <nav className="container-custom flex items-center justify-between py-4">
+    <header
+      className={cn(
+        "fixed inset-x-0 top-0 z-50 transition-all duration-300",
+        scrolled
+          ? "border-b border-border/60 bg-background/70 backdrop-blur-xl"
+          : "border-b border-transparent bg-background/40 backdrop-blur-md"
+      )}
+    >
+      <nav
+        aria-label="Navigation principale"
+        className="container-custom flex h-16 items-center justify-between"
+      >
         {/* Logo */}
-        <div className="font-bold text-xl text-foreground">
-          SO Kevin Jonas Gningnabe
-        </div>
+        <a
+          href="#hero"
+          onClick={(e) => {
+            e.preventDefault();
+            scrollToSection("#hero");
+          }}
+          className="group flex items-center gap-2"
+        >
+          <span
+            aria-hidden
+            className="grid h-8 w-8 place-items-center rounded-lg border border-border bg-secondary/60 text-sm font-bold tracking-tight"
+          >
+            SK
+          </span>
+          <span className="hidden text-sm font-semibold tracking-tight sm:inline">
+            SO Kevin Jonas
+          </span>
+        </a>
 
-        {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center space-x-8">
-          {navItems.map((item) => (
-            <button
-              key={item.label}
-              onClick={() => scrollToSection(item.href)}
-              className="text-muted-foreground hover:text-primary transition-colors"
-            >
-              {item.label}
-            </button>
+        {/* Desktop nav */}
+        <ul className="hidden items-center gap-1 md:flex">
+          {NAV_ITEMS.map((item) => (
+            <li key={item.href}>
+              <button
+                onClick={() => scrollToSection(item.href)}
+                className="rounded-md px-3 py-2 text-sm text-muted-foreground transition-colors hover:bg-secondary/60 hover:text-foreground"
+              >
+                {item.label}
+              </button>
+            </li>
           ))}
-        </div>
+        </ul>
 
-        {/* Social Links */}
-        <div className="hidden md:flex items-center space-x-4">
-          <Button variant="ghost" size="sm" asChild>
-            <a href="https://linkedin.com/in/jonas-so" target="_blank" rel="noopener noreferrer">
+        {/* Right actions */}
+        <div className="hidden items-center gap-1 md:flex">
+          <Button variant="ghost" size="icon" asChild aria-label="LinkedIn">
+            <a
+              href="https://linkedin.com/in/jonas-so"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <Linkedin className="h-4 w-4" />
             </a>
           </Button>
-          <Button variant="ghost" size="sm" asChild>
-            <a href="https://github.com/jonas-so" target="_blank" rel="noopener noreferrer">
+          <Button variant="ghost" size="icon" asChild aria-label="GitHub">
+            <a
+              href="https://github.com/jonas-so"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <Github className="h-4 w-4" />
             </a>
           </Button>
-          <Button variant="ghost" size="sm" asChild>
-            <a href="mailto:jonas.so@example.com">
-              <Mail className="h-4 w-4" />
+          <Button size="sm" className="ml-2 gap-2" asChild>
+            <a href="/cv-so-kevin-jonas.pdf" download>
+              <Download className="h-3.5 w-3.5" />
+              CV
             </a>
           </Button>
         </div>
 
-        {/* Mobile Menu Button */}
+        {/* Mobile trigger */}
         <Button
           variant="ghost"
-          size="sm"
+          size="icon"
           className="md:hidden"
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          aria-label={isMenuOpen ? "Fermer le menu" : "Ouvrir le menu"}
+          aria-expanded={isMenuOpen}
+          onClick={() => setIsMenuOpen((v) => !v)}
         >
           {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </Button>
       </nav>
 
-      {/* Mobile Menu */}
-      {isMenuOpen && (
-        <div className="md:hidden bg-background border-t border-border">
-          <div className="container-custom py-4 space-y-4">
-            {navItems.map((item) => (
-              <button
-                key={item.label}
-                onClick={() => scrollToSection(item.href)}
-                className="block w-full text-left text-muted-foreground hover:text-primary transition-colors py-2"
+      {/* Mobile menu */}
+      <div
+        className={cn(
+          "overflow-hidden border-t border-border/60 bg-background/95 backdrop-blur-xl transition-[max-height,opacity] duration-300 md:hidden",
+          isMenuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+        )}
+      >
+        <div className="container-custom flex flex-col gap-1 py-4">
+          {NAV_ITEMS.map((item) => (
+            <button
+              key={item.href}
+              onClick={() => scrollToSection(item.href)}
+              className="rounded-md px-3 py-2.5 text-left text-sm text-muted-foreground transition-colors hover:bg-secondary/60 hover:text-foreground"
+            >
+              {item.label}
+            </button>
+          ))}
+          <div className="mt-2 flex items-center gap-2 border-t border-border/60 pt-3">
+            <Button variant="outline" size="sm" asChild className="flex-1">
+              <a
+                href="https://linkedin.com/in/jonas-so"
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                {item.label}
-              </button>
-            ))}
-            <div className="flex items-center space-x-4 pt-4 border-t border-border">
-              <Button variant="ghost" size="sm" asChild>
-                <a href="https://linkedin.com/in/jonas-so" target="_blank" rel="noopener noreferrer">
-                  <Linkedin className="h-4 w-4" />
-                </a>
-              </Button>
-              <Button variant="ghost" size="sm" asChild>
-                <a href="https://github.com/jonas-so" target="_blank" rel="noopener noreferrer">
-                  <Github className="h-4 w-4" />
-                </a>
-              </Button>
-              <Button variant="ghost" size="sm" asChild>
-                <a href="mailto:jonas.so@example.com">
-                  <Mail className="h-4 w-4" />
-                </a>
-              </Button>
-            </div>
+                <Linkedin className="mr-1.5 h-4 w-4" /> LinkedIn
+              </a>
+            </Button>
+            <Button variant="outline" size="sm" asChild className="flex-1">
+              <a
+                href="https://github.com/jonas-so"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Github className="mr-1.5 h-4 w-4" /> GitHub
+              </a>
+            </Button>
+            <Button size="sm" asChild className="flex-1">
+              <a href="/cv-so-kevin-jonas.pdf" download>
+                <Download className="mr-1.5 h-3.5 w-3.5" /> CV
+              </a>
+            </Button>
           </div>
         </div>
-      )}
+      </div>
     </header>
   );
 };
