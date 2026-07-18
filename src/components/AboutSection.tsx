@@ -1,5 +1,5 @@
 import { Compass, Layers, ShieldCheck, Zap } from "lucide-react";
-import jonasPortrait from "@/assets/jonas-portrait.jpg";
+import jonasPortrait from "@/assets/avatar.png";
 
 /**
  * AboutSection — Narratif senior : parcours + valeurs.
