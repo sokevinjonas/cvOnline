@@ -10,7 +10,6 @@ const NAV = [
   { label: "Expériences", href: "#experience" },
   { label: "Réalisations", href: "#projects" },
   { label: "À propos", href: "#about" },
-  { label: "Écrits", href: "#blog" },
   { label: "Contact", href: "#contact" },
 ] as const;
 
@@ -18,10 +17,10 @@ const SOCIALS = [
   {
     icon: Linkedin,
     label: "LinkedIn",
-    href: "https://linkedin.com/in/jonas-so",
+    href: "https://linkedin.com/in/so-kevin-jonas",
   },
-  { icon: Github, label: "GitHub", href: "https://github.com/jonas-so" },
-  { icon: Mail, label: "Email", href: "mailto:jonas.so@example.com" },
+  { icon: Github, label: "GitHub", href: "https://github.com/sokevinjonas" },
+  { icon: Mail, label: "Email", href: "mailto:sokevin7@gmail.com" },
 ] as const;
 
 const Footer = () => {
@@ -51,9 +50,9 @@ const Footer = () => {
               </span>
             </div>
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-muted-foreground">
-              Ingénieur Logiciel Full Stack · Software Engineer · Consultant ·
-              Product Builder · SaaS Founder. Basé à Ouagadougou, disponible à
-              l'international.
+              Ingénieur Logiciel Full Stack · Consultant · Product Builder ·
+              SaaS Founder. Basé à Ouagadougou, disponible pour missions en
+              freelance.
             </p>
             <div className="mt-6 flex items-center gap-1">
               {SOCIALS.map((s) => (
@@ -115,7 +114,7 @@ const Footer = () => {
               </li>
               <li>
                 <a
-                  href="https://linkedin.com/in/jonas-so"
+                  href="https://linkedin.com/in/so-kevin-jonas"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-muted-foreground transition-colors hover:text-foreground"
@@ -125,7 +124,7 @@ const Footer = () => {
               </li>
               <li>
                 <a
-                  href="https://github.com/jonas-so"
+                  href="https://github.com/sokevinjonas"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-muted-foreground transition-colors hover:text-foreground"

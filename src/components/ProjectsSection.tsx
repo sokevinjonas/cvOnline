@@ -14,9 +14,9 @@ interface Project {
   outcome: string;
   stack: string[];
   status: "En production" | "En développement" | "Live" | "Case study";
+  category: "Client" | "Personnel" | "Open source";
   links?: { demo?: string; github?: string };
   featured?: boolean;
-  cover?: string;
 }
 
 const PROJECTS: Project[] = [
@@ -31,56 +31,146 @@ const PROJECTS: Project[] = [
       "Digitalisation complète du cycle atelier — de la prise de commande au paiement, sur web et mobile.",
     stack: ["Angular", "Ionic", "Laravel", "PostgreSQL", "Docker", "Stripe"],
     status: "En production",
+    category: "Personnel",
     links: { demo: "https://couturart.com" },
     featured: true,
   },
   {
-    name: "ARENIA",
-    tagline: "Plateforme événementielle",
-    problem: "Coordination complexe entre organisateurs et prestataires.",
-    solution: "Web app centralisée avec workflows dédiés et messagerie temps réel.",
-    outcome: "Cycles d'organisation réduits, communication traçable.",
-    stack: ["Angular", "NestJS", "PostgreSQL"],
+    name: "Nanika — Anime Duel Mobile",
+    tagline: "Jeu mobile PvP de quiz anime en temps réel",
+    problem:
+      "Les fans d'anime manquent d'un jeu de quiz compétitif et social alliant temps réel et progression narrative.",
+    solution:
+      "App mobile Expo/React Native avec duels PvP temps réel (Socket.io), mode solo contre IA et progression par arcs, connectée à un backend GraphQL.",
+    outcome:
+      "Architecture temps réel opérationnelle (Apollo Client + Socket.io), développement actif sur nan-ika.com.",
+    stack: ["Expo", "React Native", "GraphQL", "Socket.io", "TypeScript"],
     status: "En développement",
+    category: "Personnel",
   },
   {
-    name: "MoneyTok",
-    tagline: "Fintech mobile — épargne & suivi",
-    problem: "Difficulté à suivre son épargne et ses objectifs personnels.",
-    solution: "App mobile avec tableaux de bord, objectifs et notifications intelligentes.",
-    outcome: "Expérience mobile fluide, prête pour un pilote utilisateur.",
-    stack: ["React Native", "NestJS", "PostgreSQL"],
+    name: "Nanika API",
+    tagline: "Backend GraphQL temps réel avec économie F2P",
+    problem:
+      "Le jeu Nanika nécessite un backend scalable gérant temps réel, monétisation F2P et anti-triche.",
+    solution:
+      "API NestJS avec GraphQL + WebSocket, cache Redis, paiements Monapaie/GeniusPay, IA (Groq/Bedrock) pour la génération de contenu.",
+    outcome:
+      "Backend testé en profondeur (216 tests Jest, load testing K6), déployé via CI/CD self-hosted (Gitea Actions).",
+    stack: ["NestJS", "GraphQL", "PostgreSQL", "Redis", "Prisma"],
     status: "En développement",
+    category: "Personnel",
   },
   {
-    name: "Anime Duel",
-    tagline: "Jeu web multi-joueurs",
-    problem: "Créer une expérience ludique temps réel autour de la culture anime.",
-    solution: "Serveur de match-making, gameplay tour par tour, classement ELO.",
-    outcome: "Prototype fonctionnel avec sessions temps réel stables.",
-    stack: ["React", "NestJS", "WebSocket", "PostgreSQL"],
+    name: "Kultura",
+    tagline: "Gestion complète d'atelier de couture",
+    problem:
+      "Un atelier de couture gère mesures, commandes et facturation manuellement, sans visibilité ni traçabilité.",
+    solution:
+      "Application web (Laravel) et mobile (React) : mesures clients, commandes, affectation des couturiers, stock tissus, facturation automatique et alertes SMS.",
+    outcome:
+      "Solution en production avec gestion fine des droits d'accès et statistiques avancées sur couturiers et clients.",
+    stack: ["Laravel", "React", "MySQL"],
+    status: "En production",
+    category: "Client",
+  },
+  {
+    name: "StopVol API",
+    tagline: "API de déclaration et suivi de vols d'engins",
+    problem:
+      "Difficile de déclarer et suivre le vol d'une moto ou d'un engin deux-roues de façon centralisée et sécurisée.",
+    solution:
+      "API RESTful Laravel avec authentification OTP par SMS, architecture sécurisée (UUID), stockage de documents et notifications via queues.",
+    outcome: "Projet terminé, open source, prêt pour intégration front.",
+    stack: ["Laravel", "MySQL/PostgreSQL", "Sanctum", "OTP"],
     status: "Case study",
-    links: { github: "https://github.com/jonas-so" },
+    category: "Open source",
+    links: { github: "https://github.com/sokevinjonas/StopVol-API" },
   },
   {
-    name: "API Laravel",
-    tagline: "Backend template production-ready",
-    problem: "Bootstrapper rapidement une API sécurisée pour projets clients.",
-    solution: "Template Laravel avec auth JWT, rôles, Swagger, Docker et CI.",
-    outcome: "Base réutilisée sur plusieurs missions freelance.",
-    stack: ["Laravel", "PHP", "JWT", "Docker", "Swagger"],
-    status: "Live",
-    links: { github: "https://github.com/jonas-so" },
+    name: "Amadeus",
+    tagline: "Plateforme de réservation de billets d'avion pour entreprises",
+    problem:
+      "Les entreprises réservent leurs billets directement à l'aéroport, sans centralisation ni suivi.",
+    solution:
+      "Plateforme Laravel permettant aux entreprises de passer par une agence pour réserver et gérer leurs billets.",
+    outcome: "Solution en production, utilisée par l'agence et ses clients entreprises.",
+    stack: ["Laravel", "MySQL"],
+    status: "En production",
+    category: "Client",
+    links: { github: "https://github.com/ibrahpremier/amadeus-plateforme" },
   },
   {
-    name: "Portfolio",
-    tagline: "Ce site — vitrine ingénierie",
-    problem: "Se positionner comme ingénieur senior et non simple développeur.",
-    solution: "Portfolio React/TS avec design system premium, dark-first, SEO.",
-    outcome: "Convertit visiteurs recruteurs et clients en conversations.",
-    stack: ["React", "TypeScript", "Tailwind", "shadcn/ui"],
-    status: "Live",
-    links: { github: "https://github.com/jonas-so" },
+    name: "Gest-Microfin",
+    tagline: "Digitalisation de la collecte pour institutions de microfinance",
+    problem:
+      "Les agents de microfinance collectent l'argent sur cahier papier, sans traçabilité ni reporting fiable.",
+    solution:
+      "Plateforme permettant aux entreprises de microfinance de digitaliser leur processus de collecte.",
+    outcome: "Solution déployée en production, remplaçant le suivi papier.",
+    stack: ["Laravel", "MySQL"],
+    status: "En production",
+    category: "Client",
+    links: { github: "https://github.com/ibrahpremier/gest-microfin" },
+  },
+  {
+    name: "Seen-Releveur",
+    tagline: "App mobile de relevé de compteurs pour l'ONEA",
+    problem: "Les releveurs de compteurs d'eau opèrent sans outil mobile centralisé.",
+    solution: "Application mobile Ionic/Angular dédiée au relevé de compteurs sur le terrain.",
+    outcome: "Solution en production, utilisée par les releveurs de l'ONEA.",
+    stack: ["Ionic", "Angular"],
+    status: "En production",
+    category: "Client",
+    links: { github: "https://github.com/ibrahpremier/seen-releveur" },
+  },
+  {
+    name: "Gest-Club",
+    tagline: "Plateforme de gestion pour club service (Rotary Ouaga)",
+    problem:
+      "Un club service doit suivre présences, cotisations, mandats et missions sans outil digital adapté.",
+    solution:
+      "Plateforme Laravel de gestion complète : présence, rencontres, cotisations, mandats et missions.",
+    outcome: "Solution en production pour le Rotary Club Ouaga.",
+    stack: ["Laravel", "MySQL"],
+    status: "En production",
+    category: "Client",
+  },
+  {
+    name: "Manager App",
+    tagline: "Gestion de points de vente",
+    problem: "Les commerces manquent d'un outil unifié pour gérer leurs points de vente.",
+    solution: "Application de gestion de point de vente : front mobile Ionic et backend Laravel.",
+    outcome: "Solution en production chez plusieurs clients commerçants.",
+    stack: ["Ionic", "Laravel"],
+    status: "En production",
+    category: "Client",
+  },
+  {
+    name: "Rocky DevOps Environment",
+    tagline: "Laboratoire DevOps local automatisé",
+    problem:
+      "Manque d'environnement proche d'un serveur d'entreprise pour pratiquer l'administration et le déploiement.",
+    solution:
+      "Lab automatisé (Vagrant, VirtualBox, Rocky Linux 9, Docker, Docker Compose) pour s'entraîner à l'administration Linux, l'IaC et la conteneurisation.",
+    outcome: "Environnement reproductible utilisé pour monter en compétence DevOps.",
+    stack: ["Vagrant", "Docker", "Rocky Linux", "VirtualBox"],
+    status: "Case study",
+    category: "Open source",
+    links: { github: "https://github.com/sokevinjonas/rocky-devops" },
+  },
+  {
+    name: "Prédiction des Jours de Forte Vente",
+    tagline: "Machine learning pour anticiper les pics de vente",
+    problem:
+      "Les commerçants ouest-africains gèrent leur stock à l'instinct, causant surstockage ou ruptures.",
+    solution:
+      "Système de machine learning qui prédit les jours de forte affluence pour optimiser stock, personnel et logistique.",
+    outcome: "Réduction des ruptures de stock de 30 à 50 % grâce à des prévisions fiables.",
+    stack: ["Python", "Machine Learning"],
+    status: "Case study",
+    category: "Open source",
+    links: { github: "https://github.com/sokevinjonas/Pr-diction-des-Jours-de-Forte-Vente" },
   },
 ];
 
@@ -294,7 +384,7 @@ const ProjectsSection = () => {
         <div className="mt-12 flex flex-col items-center justify-center gap-3 sm:flex-row">
           <Button variant="outline" asChild className="gap-2">
             <a
-              href="https://github.com/jonas-so"
+              href="https://github.com/sokevinjonas"
               target="_blank"
               rel="noopener noreferrer"
             >

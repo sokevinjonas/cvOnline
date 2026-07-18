@@ -50,7 +50,7 @@ const Header = () => {
             </a>
           </Button>
           <Button variant="ghost" size="sm" asChild>
-            <a href="https://github.com/jonas-so" target="_blank" rel="noopener noreferrer">
+            <a href="https://github.com/sokevinjonas" target="_blank" rel="noopener noreferrer">
               <Github className="h-4 w-4" />
             </a>
           </Button>
@@ -92,7 +92,7 @@ const Header = () => {
                 </a>
               </Button>
               <Button variant="ghost" size="sm" asChild>
-                <a href="https://github.com/jonas-so" target="_blank" rel="noopener noreferrer">
+                <a href="https://github.com/sokevinjonas" target="_blank" rel="noopener noreferrer">
                   <Github className="h-4 w-4" />
                 </a>
               </Button>

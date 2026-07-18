@@ -34,7 +34,7 @@ const DOMAINS = [
   "Logiciels SaaS",
   "API REST & GraphQL",
   "Architecture Backend",
-  "DevOps & Cloud",
+  "DevOps & Déploiement",
   "Consulting technique",
 ];
 

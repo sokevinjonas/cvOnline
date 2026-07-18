@@ -32,8 +32,8 @@ const CAPABILITIES: Capability[] = [
     icon: Cloud,
     title: "Logiciels SaaS",
     description:
-      "Conception et industrialisation de plateformes multi-tenant, du modèle métier au billing.",
-    stack: ["Laravel", "PostgreSQL", "Stripe", "Docker"],
+      "Conception et industrialisation de plateformes métier, du modèle de données au déploiement.",
+    stack: ["Laravel", "PostgreSQL", "Docker"],
     featured: true,
   },
   {
@@ -41,7 +41,7 @@ const CAPABILITIES: Capability[] = [
     title: "Applications Web",
     description:
       "Interfaces rapides, accessibles et scalables pour le web moderne.",
-    stack: ["Angular", "React", "TypeScript"],
+    stack: ["Angular", "React.js", "TypeScript"],
   },
   {
     icon: Smartphone,
@@ -59,38 +59,38 @@ const CAPABILITIES: Capability[] = [
   },
   {
     icon: LayoutDashboard,
-    title: "ERP · CRM · Back-offices",
+    title: "ERP · Back-offices",
     description:
-      "Outils métier sur-mesure qui font gagner des heures aux équipes.",
-    stack: ["Angular", "Laravel", "Odoo"],
+      "Personnalisation et évolution de solutions métier sur-mesure.",
+    stack: ["Odoo", "Python/XML", "Angular"],
   },
   {
     icon: Container,
     title: "DevOps & Déploiement",
     description:
-      "Docker, CI/CD, environnements reproductibles, mises en prod sereines.",
-    stack: ["Docker", "GitHub Actions", "Nginx"],
+      "Conteneurisation, CI/CD, environnements reproductibles, mises en prod sereines.",
+    stack: ["Docker", "Vagrant", "CI/CD"],
   },
   {
     icon: Database,
     title: "Architecture Backend",
     description:
-      "Modélisation, performance, résilience — des fondations qui tiennent.",
-    stack: ["PostgreSQL", "MySQL", "Redis"],
+      "Modélisation, Clean Architecture, MVC — des fondations qui tiennent.",
+    stack: ["PostgreSQL", "MySQL", "Clean Architecture"],
   },
   {
     icon: Lightbulb,
     title: "Consulting technique",
     description:
-      "Audit de code, choix de stack, cadrage produit et accompagnement CTO-as-a-service.",
+      "Audit de code, cadrage produit, rédaction de cahiers des charges et accompagnement client.",
     stack: ["Audit", "Cadrage", "Roadmap"],
   },
   {
     icon: Wrench,
     title: "Maintenance & Support",
     description:
-      "SLA, monitoring, correctifs et évolutions continues sur vos produits.",
-    stack: ["Monitoring", "Sentry", "Logs"],
+      "Suivi fonctionnel, correctifs, tests et accompagnement des utilisateurs finaux.",
+    stack: ["Postman", "Tests QA", "Git"],
   },
 ];
 
