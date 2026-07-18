@@ -26,6 +26,7 @@ Ce portfolio met en avant :
 | Framework      | React, TypeScript, Vite                |
 | UI / Styling   | Tailwind CSS, shadcn/ui, lucide-react  |
 | Build & Tooling| Vite, ESLint                           |
+| Conteneurisation | Docker, Nginx                        |
 | Déploiement    | Hostinger / Vercel *(à préciser)*      |
 
 ## 📂 Structure du projet
@@ -46,10 +47,13 @@ src/
 ├── hooks/                # Hooks personnalisés
 ├── App.tsx
 └── main.tsx
-index.html                # SEO, meta tags, JSON-LD
+Dockerfile                # Build multi-stage (Node -> Nginx)
+docker-compose.yml         # Orchestration du conteneur
+nginx.conf                 # Config Nginx (fallback SPA, cache, gzip)
+index.html                 # SEO, meta tags, JSON-LD
 ```
 
-## 🚀 Installation
+## 🚀 Installation (développement local)
 
 Prérequis : [Node.js](https://nodejs.org/) (version 18+) et npm.
 
@@ -79,6 +83,38 @@ Pour prévisualiser le build localement :
 
 ```bash
 npm run preview
+```
+
+## 🐳 Déploiement avec Docker
+
+Le projet inclut un `Dockerfile` (build multi-stage Node → Nginx) et un `docker-compose.yml` prêts à l'emploi.
+
+### Build et lancement
+
+```bash
+docker compose up -d --build
+```
+
+Le site sera accessible sur `http://localhost:8080`.
+
+### Commandes utiles
+
+```bash
+# Voir les logs
+docker compose logs -f
+
+# Vérifier le statut du conteneur
+docker ps
+
+# Arrêter le conteneur
+docker compose down
+```
+
+### Build manuel (sans Compose)
+
+```bash
+docker build -t cvonline:v1.0 .
+docker run -d -p 8080:80 --name cvonline-test cvonline:v1.0
 ```
 
 ## 🔍 SEO
