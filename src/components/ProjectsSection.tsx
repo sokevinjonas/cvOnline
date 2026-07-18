@@ -32,7 +32,7 @@ const PROJECTS: Project[] = [
     stack: ["Angular", "Ionic", "Laravel", "PostgreSQL", "Docker", "Stripe"],
     status: "En production",
     category: "Personnel",
-    links: { demo: "https://couturart.com" },
+    links: { demo: "https://couturart.app" },
     featured: true,
   },
   {

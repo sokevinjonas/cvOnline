@@ -1,73 +1,100 @@
-# Welcome to your Lovable project
+# Portfolio — SO Kevin Jonas Gningnabe
 
-## Project info
+Portfolio personnel présentant mon parcours d'Ingénieur Logiciel Full Stack : expertise technique, expériences professionnelles, réalisations et publications.
 
-**URL**: https://lovable.dev/projects/2ad11c92-7193-4eed-9c84-e1b2154f8914
+🔗 **Site en ligne :** [kgslab.com](https://kgslab.com)
 
-## How can I edit this code?
+![Statut](https://img.shields.io/badge/statut-en%20ligne-brightgreen)
+![Licence](https://img.shields.io/badge/licence-MIT-blue)
 
-There are several ways of editing your application.
+---
 
-**Use Lovable**
+## ✨ Aperçu
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/2ad11c92-7193-4eed-9c84-e1b2154f8914) and start prompting.
+Ce portfolio met en avant :
 
-Changes made via Lovable will be committed automatically to this repo.
+- **Expertise** — SaaS, applications Web & Mobile, API REST/GraphQL, DevOps, consulting technique.
+- **Expériences** — parcours professionnel de Développeur Full Stack (Expertizlab, YULCOM, HSN Consult, KULTURA, 2K Corporation).
+- **Réalisations** — projets clients et personnels (Couturart, Nanika, StopVol API, Amadeus, Rocky DevOps, et plus).
+- **Écrits** — publications techniques intégrées directement depuis LinkedIn.
+- **Contact** — coordonnées directes pour échanger sur une mission.
 
-**Use your preferred IDE**
+## 🛠️ Stack technique
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+| Catégorie      | Technologies                          |
+| -------------- | -------------------------------------- |
+| Framework      | React, TypeScript, Vite                |
+| UI / Styling   | Tailwind CSS, shadcn/ui, lucide-react  |
+| Build & Tooling| Vite, ESLint                           |
+| Déploiement    | Hostinger / Vercel *(à préciser)*      |
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+## 📂 Structure du projet
 
-Follow these steps:
+```
+src/
+├── assets/              # Images, avatar, visuels
+├── components/          # Sections du portfolio
+│   ├── HeroSection.tsx
+│   ├── ExpertiseSection.tsx
+│   ├── ExperienceSection.tsx
+│   ├── ProjectsSection.tsx
+│   ├── AboutSection.tsx
+│   ├── BlogSection.tsx
+│   ├── ContactSection.tsx
+│   └── Footer.tsx
+├── components/ui/       # Composants shadcn/ui
+├── hooks/                # Hooks personnalisés
+├── App.tsx
+└── main.tsx
+index.html                # SEO, meta tags, JSON-LD
+```
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+## 🚀 Installation
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+Prérequis : [Node.js](https://nodejs.org/) (version 18+) et npm.
 
-# Step 3: Install the necessary dependencies.
-npm i
+```bash
+# Cloner le dépôt
+git clone https://github.com/sokevinjonas/<nom-du-repo>.git
+cd <nom-du-repo>
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Installer les dépendances
+npm install
+
+# Lancer le serveur de développement
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+Le site est accessible sur `http://localhost:5173` par défaut.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## 📦 Build de production
 
-**Use GitHub Codespaces**
+```bash
+npm run build
+```
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+Les fichiers optimisés sont générés dans le dossier `dist/`.
 
-## What technologies are used for this project?
+Pour prévisualiser le build localement :
 
-This project is built with:
+```bash
+npm run preview
+```
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## 🔍 SEO
 
-## How can I deploy this project?
+Le fichier `index.html` inclut :
 
-Simply open [Lovable](https://lovable.dev/projects/2ad11c92-7193-4eed-9c84-e1b2154f8914) and click on Share -> Publish.
+- Meta tags (title, description, keywords)
+- Open Graph & Twitter Cards pour le partage sur les réseaux
+- Données structurées JSON-LD (schema.org `Person`)
 
-## Can I connect a custom domain to my Lovable project?
+## 📬 Contact
 
-Yes, you can!
+- **Email :** [sokevin7@gmail.com](mailto:sokevin7@gmail.com)
+- **LinkedIn :** [linkedin.com/in/so-kevin-jonas](https://linkedin.com/in/so-kevin-jonas)
+- **GitHub :** [github.com/sokevinjonas](https://github.com/sokevinjonas)
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+## 📄 Licence
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+Ce projet est distribué sous licence [MIT](LICENSE). Le code source est libre de consultation à des fins d'apprentissage ; le contenu personnel (textes, projets, image) reste la propriété de SO Kevin Jonas Gningnabe.

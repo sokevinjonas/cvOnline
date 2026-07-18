@@ -55,7 +55,7 @@ const Header = () => {
             </a>
           </Button>
           <Button variant="ghost" size="sm" asChild>
-            <a href="mailto:jonas.so@example.com">
+            <a href="mailto:sokevin7@gmail.com">
               <Mail className="h-4 w-4" />
             </a>
           </Button>
@@ -97,7 +97,7 @@ const Header = () => {
                 </a>
               </Button>
               <Button variant="ghost" size="sm" asChild>
-                <a href="mailto:jonas.so@example.com">
+                <a href="mailto:sokevin7@gmail.com">
                   <Mail className="h-4 w-4" />
                 </a>
               </Button>
